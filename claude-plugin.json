@@ -1,0 +1,87 @@
+{
+  "$schema": "https://anthropic.com/claude-plugin.schema.json",
+  "name": "library-os",
+  "version": "1.0.0",
+  "description": "The open-source Library Intelligence System — turn every book you read into a permanent deep-dive on your own website. Three slash commands, one skill, one subagent.",
+  "author": {
+    "name": "Frank",
+    "url": "https://frankx.ai"
+  },
+  "homepage": "https://frankx.ai/library/approach",
+  "repository": "https://github.com/frankxai/library-os",
+  "license": "MIT",
+  "keywords": [
+    "library",
+    "books",
+    "quotes",
+    "personal-knowledge-management",
+    "reading",
+    "aeo",
+    "seo",
+    "next.js"
+  ],
+  "claudeCode": {
+    "commands": [
+      {
+        "name": "library-add",
+        "path": ".claude/commands/library-add.md",
+        "description": "Create a baseline library entry from just a book title."
+      },
+      {
+        "name": "library-deepen",
+        "path": ".claude/commands/library-deepen.md",
+        "description": "Populate quotes[] + chapters[] via book-distiller subagent."
+      },
+      {
+        "name": "library-research",
+        "path": ".claude/commands/library-research.md",
+        "description": "Add continueReading[] + videos[] with curated reasons."
+      }
+    ],
+    "skills": [
+      {
+        "name": "library-os",
+        "path": ".claude/skills/library-os/SKILL.md",
+        "description": "Canonical workflow documentation: capture → extract → enrich → publish."
+      }
+    ],
+    "agents": [
+      {
+        "name": "book-distiller",
+        "path": ".claude/agents/book-distiller.md",
+        "description": "Extraction specialist — returns BookQuote[] and BookChapterSummary[] from a title or source text."
+      }
+    ]
+  },
+  "compatibility": {
+    "primary": "claude-code",
+    "alsoWorks": ["chatgpt", "claude-web", "cursor", "codex", "gemini-cli"],
+    "notes": "Commands are plain-text prompts. Paste into any capable AI for the same workflow. See docs/cross-ai-guide.md."
+  },
+  "stack": {
+    "framework": "next.js",
+    "minimumVersion": "14.0.0",
+    "tested": ["14.2.x", "16.1.x"],
+    "dependencies": ["react", "react-dom"],
+    "tailwind": "v3+ recommended (used in template)"
+  },
+  "exposes": {
+    "components": ["QuoteShareToolbar"],
+    "routes": [
+      "/library",
+      "/library/{slug}",
+      "/library/{slug}/q/{n}",
+      "/library/quotes",
+      "/library/approach",
+      "/api/quote/random",
+      "/api/quote/today"
+    ],
+    "schemas": [
+      "BookReview",
+      "BookQuote",
+      "BookChapterSummary",
+      "RelatedReadingItem",
+      "BookVideo"
+    ]
+  }
+}

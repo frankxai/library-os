@@ -4,8 +4,25 @@
 Capture, extract, enrich, and publish every book you read into a permanent deep-dive on your own website.
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Ffrankxai%2Flibrary-os&project-name=my-library&repository-name=my-library)
+[![License: MIT](https://img.shields.io/badge/License-MIT-amber.svg)](./LICENSE)
+[![Claude Code Plugin](https://img.shields.io/badge/Claude_Code-plugin-rose)](./claude-plugin.json)
 
-Live reference implementation: **[frankx.ai/library](https://frankx.ai/library)** · Approach page: **[frankx.ai/library/approach](https://frankx.ai/library/approach)**
+> Live reference: **22 books, 277 curated quotes, dynamic OG images, JSON quote API** at [frankx.ai/library](https://frankx.ai/library) · The story: [frankx.ai/library/approach](https://frankx.ai/library/approach)
+
+## Install (5 paths, pick one)
+
+```bash
+# Bootable Next.js site
+git clone https://github.com/frankxai/library-os.git my-library && cd my-library && npm install && npm run dev
+
+# Or — Claude Code plugin only (commands + skill + subagent)
+rsync -av <(curl -sL https://github.com/frankxai/library-os/archive/main.tar.gz | tar xz)/library-os-main/.claude/ .claude/
+
+# Or — via ACOS
+npx @frankx/agentic-creator-os init  # library-os included from v11+
+```
+
+Full install paths in [`INSTALL.md`](./INSTALL.md) — bootable site, drop-in to existing Next.js, plugin-only, cross-AI (ChatGPT/Cursor/Codex/Gemini), via ACOS.
 
 ---
 
