@@ -1,0 +1,58 @@
+{
+  "name": "library-os",
+  "version": "0.1.0",
+  "description": "Library OS — the open-source Library Intelligence System. Capture, extract, enrich, and publish every book you read into a permanent deep-dive on your own website. Composes the Starlight Intelligence Protocol (SIP) substrate.",
+  "author": {
+    "name": "Frank Riemer",
+    "email": "frank@frankx.ai",
+    "url": "https://frankx.ai"
+  },
+  "homepage": "https://github.com/frankxai/library-os",
+  "repository": "https://github.com/frankxai/library-os",
+  "license": "MIT",
+  "keywords": [
+    "library-os",
+    "book-intelligence",
+    "obsidian",
+    "second-brain",
+    "knowledge-system",
+    "sip",
+    "claude-code",
+    "cursor",
+    "agentic-ai",
+    "annotations",
+    "highlights",
+    "reading-system"
+  ],
+  "categories": [
+    "knowledge-system",
+    "second-brain",
+    "publishing",
+    "agent-orchestration"
+  ],
+  "platforms": [
+    "claude-code",
+    "cursor",
+    "cline",
+    "codex",
+    "gemini-cli"
+  ],
+  "engines": {
+    "claude-code": ">=2.0.0",
+    "node": ">=20"
+  },
+  "compose": {
+    "extends": [
+      "sip-protocol"
+    ],
+    "absorbs": []
+  },
+  "principles": [
+    "Every book read → a permanent deep-dive page on your own domain",
+    "Highlights are raw input; structured deep-dives are the output",
+    "Reading is a writing practice — extract + enrich, never just collect",
+    "Local-first: your library lives in your repo, not a SaaS",
+    "SIP-attested: every published deep-dive carries Built on SIP"
+  ],
+  "attestation": "Built on SIP — Starlight Intelligence Protocol v1.1.1. License: MIT."
+}
