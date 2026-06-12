@@ -1,0 +1,10 @@
+{
+  "risk": "library",
+  "health": "pnpm build",
+  "agentFiles": [
+    "AGENTS.md",
+    "CLAUDE.md"
+  ],
+  "deployPolicy": "manual",
+  "globalHooksAllowed": false
+}

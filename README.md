@@ -9,6 +9,8 @@ Capture, extract, enrich, and publish every book you read into a permanent deep-
 
 > Live reference: **22 books, 277 curated quotes, dynamic OG images, JSON quote API** at [frankx.ai/library](https://frankx.ai/library) · The story: [frankx.ai/library/approach](https://frankx.ai/library/approach)
 
+![Library OS Dashboard](./public/images/library/library-os-dashboard.png)
+
 ## Install (5 paths, pick one)
 
 ```bash
@@ -43,6 +45,9 @@ Library OS is the system that makes it compound. Every book becomes a permanent,
 - **One subagent** — `book-distiller` (the extraction specialist)
 - **Full JSON-LD schema** — BreadcrumbList + Article + Review + FAQPage + Quotation on every book page
 - **Two example deep-dives** — Profit First + The Fabric of Reality (ship real books in under an hour)
+- **Quote Sharing Suite (V2)** — Selection-based sharing, desktop floating `QuoteShareToolbar`, and tap-to-share badge overlay for touch devices.
+- **Dynamic OG Image Engine (V2)** — Dynamic 1200x630 PNG card generation per quote page (`/library/{slug}/q/{n}`) for premium social sharing previews.
+- **Quote Vault & APIs (V2)** — Unified Quote Vault page (`/library/quotes`) displaying all curated passages, and JSON Quote APIs (`/api/quote/random`, `/api/quote/today`).
 
 ## Quick start (5 minutes to live)
 
