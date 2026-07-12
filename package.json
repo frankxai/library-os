@@ -1,6 +1,6 @@
 {
   "name": "library-os",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "description": "The open-source Library Intelligence System. Capture, extract, enrich, and publish every book you read into a permanent deep-dive on your own website.",
   "license": "MIT",

@@ -55,6 +55,10 @@ When delegated to, you receive:
 }
 ```
 
+## Source boundary
+
+When the supplied source is partial — a photograph of selected pages, a small highlight export, or a note — return only what that source supports. Do not infer a complete chapter map, unseen quotations, translation wording, or publication details. Mark paraphrases as paraphrases, keep excerpts short, and direct private reflections/full source scans to the owner’s private capture system rather than the public Library OS output.
+
 ## Extraction methodology
 
 ### For quotes

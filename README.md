@@ -7,7 +7,7 @@ Capture, extract, enrich, and publish every book you read into a permanent deep-
 [![License: MIT](https://img.shields.io/badge/License-MIT-amber.svg)](./LICENSE)
 [![Claude Code Plugin](https://img.shields.io/badge/Claude_Code-plugin-rose)](./claude-plugin.json)
 
-> Live reference: **22 books, 277 curated quotes, dynamic OG images, JSON quote API** at [frankx.ai/library](https://frankx.ai/library) · The story: [frankx.ai/library/approach](https://frankx.ai/library/approach)
+> Live reference: the current FrankX Library, with dynamic OG images and quote APIs, at [frankx.ai/library](https://frankx.ai/library) · Architecture: [frankx.ai/library/approach](https://frankx.ai/library/approach). Counts are intentionally registry-driven, never hard-coded.
 
 ![Library OS Dashboard](./public/images/library/library-os-dashboard.png)
 
@@ -40,7 +40,7 @@ Library OS is the system that makes it compound. Every book becomes a permanent,
 
 - **Data schema** — one TypeScript interface for everything a book can be
 - **Next.js App Router template** — `/library` index + `/library/{slug}` deep-dive + `/library/approach` showcase
-- **Three slash commands** — `/library-add`, `/library-deepen`, `/library-research`
+- **Four slash commands** — `/library-capture`, `/library-add`, `/library-deepen`, `/library-research`
 - **One skill** — `library-os` (documents the full workflow)
 - **One subagent** — `book-distiller` (the extraction specialist)
 - **Full JSON-LD schema** — BreadcrumbList + Article + Review + FAQPage + Quotation on every book page
@@ -85,24 +85,23 @@ public/images/library/                ← book cover JPEGs
 
 Requires: Next.js 14+ App Router, Tailwind CSS v3+, TypeScript. No other dependencies.
 
-## The four-stage workflow
+## The source-aware workflow
 
 ```
-CAPTURE ──────► EXTRACT ──────► ENRICH ──────► PUBLISH
-   │                │                │              │
-   ▼                ▼                ▼              ▼
-Photo, notes,   quotes[]      continueReading[]   /library/{slug}
-Kindle export,  chapters[]    videos[]            (live, SEO+AEO)
-voice memo      tldr, faq     + schema
+PRIVATE CAPTURE ─► EVIDENCE ─► DISTILL ─► CONNECT ─► REVIEW ─► PUBLISH
+      │                 │            │           │          │          │
+      ▼                 ▼            ▼           ▼          ▼          ▼
+photo, notes      edition/pages   insights     practice   approval   /library/{slug}
+kindle, voice      + rights note  quotes       links      boundary   (live, SEO+AEO)
 ```
 
-**1 — CAPTURE.** A photo of handwritten margin notes, a Kindle highlights export, a voice memo, a book title in a text file. You refuse to let a thought leave the system.
+**1 — PRIVATE CAPTURE.** A photo of handwritten margin notes, a Kindle highlights export, a voice memo, or a title enters an owner-controlled inbox. The raw signal is preserved; it is not automatically public.
 
-**2 — EXTRACT.** Run `/library-add "Book Title"` to create the baseline entry with TL;DR, 5 key insights, Best-For audience, starter FAQ, and a book cover pulled from OpenLibrary.
+**2 — EVIDENCE + DISTILL.** Run `/library-capture` for photos/notes first, then `/library-add "Book Title"` for the approved baseline entry. Record source pages and translator when visible; create a field note instead of a fake whole-book summary when evidence is partial.
 
-**3 — ENRICH.** Run `/library-deepen {slug}` to populate 10–20 curated quotes and every chapter. Then `/library-research {slug}` to add Continue-Reading and Videos.
+**3 — CONNECT + REVIEW.** Run `/library-deepen {slug}` only where evidence supports it, then `/library-research {slug}`. Add an original practice and verified connections. Explicitly review the public/private split.
 
-**4 — PUBLISH.** `git commit && git push`. Vercel redeploys. Your book is now a permanent URL with the full deep-dive hub + rich structured data.
+**4 — PUBLISH.** `git commit && git push`. Vercel redeploys the approved public projection to a permanent URL with structured data and tested links.
 
 ## The data schema
 
@@ -141,11 +140,12 @@ Books without optional fields render as concise reviews. Books with all fields r
 
 | Command | Purpose | Writes to |
 |---|---|---|
+| `/library-capture` | Separate photo/note evidence from the public artifact | capture record + recommendation |
 | `/library-add` | Create a new entry from just a title | `data/book-reviews.ts`, `public/images/library/` |
 | `/library-deepen` | Add quotes + chapters to existing entry | `data/book-reviews.ts` |
 | `/library-research` | Add continueReading + videos | `data/book-reviews.ts` |
 
-Run in order. Each is idempotent. Full documentation in [.claude/commands/](./.claude/commands/).
+Run `/library-capture` first for photos, notes, Kindle exports, and voice memos. The other commands are idempotent. Full documentation in [.claude/commands/](./.claude/commands/).
 
 ## Cross-AI compatibility
 
@@ -169,6 +169,19 @@ Library OS ships as a Next.js App Router app, but the **spine** (the `BookReview
 | **SvelteKit** | Small | `routes/library/+page.svelte` and `+page.svelte` in `[slug]`. |
 | **Hugo / Jekyll / 11ty** | Medium | Each BookReview becomes a markdown file with frontmatter. |
 | **Plain HTML** | Medium | A small build script renders static pages. Schema works standalone. |
+
+
+## Source-aware book photos
+
+A reading photo is evidence, not an instruction to publish the whole source. Run `/library-capture` before `/library-add`.
+
+- Preserve raw photos, full transcripts, and private reflections in an owner-controlled private inbox.
+- Put only approved provenance, short verified excerpts, original commentary, and contextual images on the public page.
+- Use a **field note** when a few pages are the source; do not fabricate the book’s unseen chapters.
+- Keep each public entry useful by adding one practice and verified internal/external connections.
+- A changed library slug needs an explicit 301 redirect. One canonical production domain and one canonical production repository should govern metadata, sitemap, and links.
+
+See [the capture contract](./docs/schema.md#source-aware-public-projection).
 
 ## Documentation
 
