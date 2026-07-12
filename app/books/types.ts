@@ -82,6 +82,41 @@ export interface BookVideo {
   kind?: 'interview' | 'lecture' | 'talk' | 'explainer' | 'summary';
 }
 
+export interface LibraryCaptureImage {
+  src: string;
+  alt: string;
+  caption?: string;
+}
+
+export interface PublicBookCapture {
+  kind: 'book-photo' | 'handwritten-note' | 'kindle-export' | 'voice-memo' | 'manual';
+  capturedAt: string;
+  edition?: string;
+  translator?: string;
+  sourcePages?: number[];
+  rightsStatus?: string;
+  publicNote?: string;
+  images?: LibraryCaptureImage[];
+}
+
+export interface BookConnection {
+  label: string;
+  href: string;
+  reason: string;
+  kind?: 'article' | 'product' | 'practice';
+}
+
+export interface BookApplication {
+  title: string;
+  body: string;
+  practice?: {
+    title: string;
+    duration?: string;
+    instruction: string;
+  };
+  connections?: BookConnection[];
+}
+
 export interface BookReview {
   slug: string;
   title: string;
@@ -93,6 +128,8 @@ export interface BookReview {
   readingTime: string;
   keyInsights: string[];
   bestFor: string[];
+  capture?: PublicBookCapture; // approved public evidence only
+  application?: BookApplication; // original, public-facing application of the reading
   amazonUrl?: string;
   relatedBook?: string; // slug of our own book
   tldr?: string; // 1–2 sentence answer block for AEO / summary cards
