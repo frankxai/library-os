@@ -146,3 +146,30 @@ To add a new category, edit `categoryColors` at the top of `app/library/page.tsx
 `app/books/lib/books-registry.ts` holds YOUR books. When a BookReview sets `relatedBook: 'your-slug'`, the detail page shows an "If You Liked This, Read Ours" section linking to your book.
 
 Empty array is fine — the section simply won't render for any review.
+
+
+## Source-aware public projection
+
+The public schema deliberately does **not** contain private reflections, full source transcripts, or private images. Keep those in an owner-controlled capture inbox. The fields below describe only the evidence and application approved for a public page.
+
+### PublicBookCapture
+
+| Field | Type | Notes |
+|---|---|---|
+| `kind` | `'book-photo' \| 'handwritten-note' \| 'kindle-export' \| 'voice-memo' \| 'manual'` | How the signal entered Library OS |
+| `capturedAt` | `string` | ISO date of the capture |
+| `edition` / `translator` | `string?` | Record wording provenance when relevant |
+| `sourcePages` | `number[]?` | Visible or otherwise verified pages only |
+| `rightsStatus` | `string?` | Human-readable publication/risk note; not legal advice |
+| `publicNote` | `string?` | Public provenance note |
+| `images` | `LibraryCaptureImage[]?` | Approved contextual images only — never readable scans by default |
+
+### BookApplication
+
+| Field | Type | Notes |
+|---|---|---|
+| `title` / `body` | `string` | Original interpretation, visibly separate from source text |
+| `practice` | object | One concrete action a reader can perform |
+| `connections` | `BookConnection[]` | Verified internal/external routes with a reason for each link |
+
+Use `capture` for evidence and `application` for the derived public action. A photo of a few pages should normally create a **field note**, not a synthetic whole-book review.
