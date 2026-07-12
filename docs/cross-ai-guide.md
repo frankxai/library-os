@@ -4,6 +4,31 @@ Library OS is designed to work with any AI pair-programmer, and without one. The
 
 This guide gives you paste-ready prompts for the three canonical workflow steps. Use them in ChatGPT, Claude.ai web, Cursor, Codex, Gemini CLI, or any capable AI.
 
+
+---
+
+## Workflow step 0 — `/library-capture` (photos, notes, highlights)
+
+**Use this before `/library-add`** whenever the source is a photo, handwritten note, highlight export, or voice memo.
+
+```
+I am using Library OS. Treat the attached source as private by default.
+
+1. List only observed evidence: title, author, edition/translator, visible pages, headings, and short passages.
+2. List uncertainty. Do not invent unseen chapters, page numbers, or quotations.
+3. Separate:
+   - private evidence to keep outside git and outside the public page;
+   - approved public provenance, short quotes, original insight, and contextual image.
+4. Recommend exactly one: private-only, source-marked field note, or full book-review baseline.
+5. Return a TypeScript `capture: PublicBookCapture` object and an `application: BookApplication` object only for material approved to publish.
+
+Rules:
+- A few photographed pages support a field note, not a whole-book summary.
+- Do not include private reflection, readable page scans, or full transcripts in the public output.
+- Label paraphrases. Credit the translator/edition for source wording.
+- Add only verified internal/external links.
+```
+
 ---
 
 ## Workflow step 1 — `/library-add` (create a baseline entry)
