@@ -8,6 +8,7 @@ Capture, extract, enrich, and publish every book you read into a permanent deep-
 [![Claude Code Plugin](https://img.shields.io/badge/Claude_Code-plugin-rose)](./claude-plugin.json)
 
 > Live reference: the current FrankX Library, with dynamic OG images and quote APIs, at [frankx.ai/library](https://frankx.ai/library) · Architecture: [frankx.ai/library/approach](https://frankx.ai/library/approach). Counts are intentionally registry-driven, never hard-coded.
+> **Repository boundary:** Library OS is the reusable software and schema for book capture and publishing. It is not the canonical home of FrankX historical sacred texts, Sacred Visions, or any fictional-world canon; it consumes authorized corpora and preserves provenance.
 
 ![Library OS Dashboard](./public/images/library/library-os-dashboard.png)
 
