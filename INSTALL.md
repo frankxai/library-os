@@ -81,12 +81,14 @@ See [`docs/cross-ai-guide.md`](./docs/cross-ai-guide.md) for paste-ready prompts
 
 ## Path 5 — Via ACOS (Agentic Creator OS)
 
-If you use [@frankx/agentic-creator-os](https://github.com/frankxai/agentic-creator-os), Library OS is included as a plugin from v11.x. The slash commands appear automatically.
+[@frankx/agentic-creator-os](https://github.com/frankxai/agentic-creator-os) is not published on npm. From the project you want to set up:
 
 ```bash
-npx @frankx/agentic-creator-os init
-# Library OS commands now available via /library-add, /library-deepen, /library-research
+git clone --depth 1 https://github.com/frankxai/agentic-creator-os.git
+bash ./agentic-creator-os/install.sh --platform=claude --target=.
 ```
+
+Path 4 remains the way to use the prompts without that installer.
 
 ---
 
