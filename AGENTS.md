@@ -23,8 +23,8 @@ Before adding a portfolio corpus or collection, load the latest reviewed `frankx
 ## Commands
 
 ```bash
-pnpm build
-pnpm test
+npm run build
+npm run type-check
 git status
 ```
 
